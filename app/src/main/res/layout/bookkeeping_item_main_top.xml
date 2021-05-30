@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gray_f3f3f3">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/color_white"
+        android:padding="20dp">
+        <TextView
+            android:id="@+id/tv1_item_main_lv_top"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/month_out"/>
+        <TextView
+            android:id="@+id/tv_item_main_lv_top_out"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="￥ 0"
+            android:layout_below="@id/tv1_item_main_lv_top"
+            android:textSize="26sp"
+            android:textStyle="bold"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:textColor="@color/color_black"/>
+        <ImageView
+            android:id="@+id/iv_item_main_lv_top_hide"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentRight="true"
+            android:src="@mipmap/ih_show"
+            android:layout_alignTop="@id/tv_item_main_lv_top_out"/>
+        <TextView
+            android:id="@+id/tv2_item_main_lv_top"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/month_in"
+            android:layout_below="@id/tv_item_main_lv_top_out"/>
+        <TextView
+            android:id="@+id/tv_item_main_lv_top_in"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/color_black"
+            android:text="￥ 0"
+            android:layout_below="@id/tv_item_main_lv_top_out"
+            android:layout_toRightOf="@id/tv2_item_main_lv_top"
+            android:layout_marginLeft="5dp"/>
+        <TextView
+            android:id="@+id/tv_item_main_lv_top_budget"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="￥ 0"
+            android:textColor="@color/color_black"
+            android:layout_alignParentRight="true"
+            android:layout_alignBottom="@id/tv2_item_main_lv_top"
+            android:layout_marginLeft="5dp"/>
+        <TextView
+            android:id="@+id/tv3_item_main_lv_top"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/budget"
+            android:layout_toLeftOf="@id/tv_item_main_lv_top_budget"
+            android:layout_alignBottom="@id/tv2_item_main_lv_top"/>
+        <TextView
+            android:id="@+id/tv4_item_main_lv_top"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@mipmap/ih_biaoge"
+            android:layout_below="@id/tv2_item_main_lv_top"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:text="@string/see_excel"
+            android:textColor="@color/green_006400"
+            android:drawablePadding="10dp"
+            android:visibility="gone"/>
+    </RelativeLayout>
+    <TextView
+        android:id="@+id/tv_item_main_lv_top_day"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="今日支出 ￥0 收入 ￥0"
+        android:textStyle="bold"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="10dp"/>
+</LinearLayout>

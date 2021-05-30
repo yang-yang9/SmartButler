@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/mViewPager"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:alpha="0.6"
+            android:background="@android:color/darker_gray"/>
+
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/mTableLayout"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+
+            app:tabIndicatorHeight="0dp"
+            app:tabIndicatorFullWidth="false"
+            app:tabIndicatorGravity="center"
+            app:tabMaxWidth="0dp"
+            app:tabRippleColor="@android:color/transparent"
+
+            app:tabGravity="fill"
+            app:tabMode="fixed"
+            app:tabSelectedTextColor="@color/colorAccent"
+            app:tabTextColor="@android:color/white"
+
+
+            android:background="@color/colorPrimary"
+            app:tabIndicatorColor="@android:color/holo_orange_light"
+            />
+
+    </LinearLayout>
+
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_setting"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:elevation="6dp"
+        android:clickable="true"
+        app:borderWidth="0dp"
+        app:rippleColor="#0097a7"
+        android:backgroundTint="@color/floatbutton"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginRight="15dp"
+        android:layout_marginBottom="70dp"
+        app:pressedTranslationZ="12dp"
+
+        app:maxImageSize="40dp"
+        app:fabSize="normal"
+        android:src="@drawable/setting"
+        android:scaleType="center"
+
+        />
+
+</RelativeLayout>

@@ -1,0 +1,17 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/fl_flashlight_police_light"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F00"
+    android:visibility="gone" >
+
+    <com.yangyang.flashlight.weight.HideTextView
+        android:id="@+id/tv_flashlight_hide_police_light"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:text="警灯"
+        android:textColor="#FFF"
+        android:textSize="20sp" />
+
+</FrameLayout>

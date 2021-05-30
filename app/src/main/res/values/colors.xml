@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--<color name="colorPrimary">#00BCD4</color>
+    <color name="colorPrimaryDark">#00BCD4</color>-->
+    <!--<color name="colorPrimary">#293047</color>
+    <color name="colorPrimaryDark">#293047</color>-->
+    <!--<color name="colorPrimary">#11264f</color>
+    <color name="colorPrimaryDark">#11264f</color>-->
+    <color name="colorPrimary">#11264f</color>
+    <color name="colorPrimaryDark">#11264f</color>
+    <color name="colorAccent">#BBADB5</color>
+
+    <color name="colorText">@android:color/darker_gray</color>
+
+    <color name="colorNormal">#00BCD4</color>
+    <color name="light_blue">#B9ECF0</color>
+
+    <color name="colorPressed">#03A9F4</color>
+
+    <color name="colorExpressTitle">#F4511E</color>
+
+    <color name="color_white">#ffffff</color>
+    <color name="color_black">#000000</color>
+
+    <color name="color_gray">#F5EDEE</color>
+
+    <color name="color_blue">#039BE5</color>
+
+    <color name="color_green">#03E50E</color>
+    <color name="color_red">#FF0000</color>
+
+    <color name="color_gray_transparent">#40808080</color>
+
+    <color name="color_transparent">#000000FF</color>
+    
+    <color name="gray_f3f3f3">#f3f3f3</color>
+    <color name="green_006400">#006400</color>
+    <color name="gray_7D7D7D">#7D7D7D</color>
+
+    <color name="dark_blue">#1C1D2E</color>
+</resources>

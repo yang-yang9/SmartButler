@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/fl_flashlight_bulb"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:visibility="gone">
+
+    <ImageView
+        android:id="@+id/iv_flashlight_bulb"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/bulb_cross_fade"
+        android:onClick="onClick_BulbCrossFade"/>
+    <com.yangyang.flashlight.weight.HideTextView
+        android:id="@+id/tv_flashlight_hide_bulb"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:text="@string/click_bulb_to_light"
+        android:textSize="20sp"/>
+</FrameLayout>

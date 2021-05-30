@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_marginTop="15dp">
+
+    <!--语音播报-->
+    <LinearLayout
+        android:id="@+id/ll_setting_speak"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:background="@color/color_white"
+        android:gravity="center_vertical"
+        android:paddingLeft="15dp">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/voice_announcements"
+                android:textSize="18sp"
+                android:textColor="@color/color_black"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="开启之后小管家的回复将会语音播报"
+                android:textSize="14sp"/>
+        </LinearLayout>
+
+        <Switch
+            android:id="@+id/sw_setting_speak"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="15dp"
+            android:theme="@style/MySwitch"/>
+    </LinearLayout>
+
+    <!--短信提醒-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/color_white"
+        android:layout_gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="15dp">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/SMS_reminder"
+                android:textSize="18sp"
+                android:textColor="@color/color_black"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="开启之后收到短信会弹框提示"
+                android:textSize="14sp"/>
+        </LinearLayout>
+
+        <Switch
+            android:id="@+id/sw_setting_SMS_reminder"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="15dp"
+            android:theme="@style/MySwitch"/>
+    </LinearLayout>
+
+    <!--更新-->
+    <LinearLayout
+        android:id="@+id/ll_setting_update"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="10dp"
+        android:gravity="center_vertical"
+        android:orientation="vertical"
+        android:paddingLeft="15dp"
+        android:background="@color/color_white">
+
+        <TextView
+            android:id="@+id/tv_setting_version"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/check_version"
+            android:textColor="@color/color_black"
+            android:textSize="18sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="@string/new_version_updates"
+            android:textSize="14sp" />
+
+    </LinearLayout>
+
+    <!--关于软件-->
+    <LinearLayout
+        android:id="@+id/ll_setting_about"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="10dp"
+        android:gravity="center_vertical"
+        android:orientation="vertical"
+        android:paddingLeft="15dp"
+        android:background="@color/color_white">
+
+        <TextView
+            android:id="@+id/tv_setting_about"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/about_software"
+            android:textColor="@color/color_black"
+            android:textSize="18sp" />
+<!--
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="@string/scan_QR_or_barcode"
+            android:textSize="14sp" />-->
+
+    </LinearLayout>
+
+    <!--我的二维码-->
+    <!--<LinearLayout
+        android:id="@+id/ll_setting_QR_code"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="10dp"
+        android:gravity="center_vertical"
+        android:orientation="vertical"
+        android:paddingLeft="15dp"
+        android:background="@color/color_white">
+
+        <TextView
+            android:id="@+id/tv_setting_QR_code"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/my_QR_code"
+            android:textColor="@color/color_black"
+            android:textSize="18sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="@string/scan_QR_or_barcode"
+            android:textSize="14sp" />
+
+    </LinearLayout>-->
+
+</LinearLayout>

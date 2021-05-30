@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp">
+
+    <EditText
+        android:id="@+id/et_express_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/express_company"
+        android:text="ems"/>
+
+    <EditText
+        android:id="@+id/et_express_number"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/express_number"
+        android:text="9830261973857"
+        android:layout_marginBottom="5dp"/>
+
+    <EditText
+        android:id="@+id/et_express_phone_number"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/need_phone_number"
+        android:layout_marginBottom="5dp"/>
+    <Button
+        android:id="@+id/btn_express_query"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/query"
+        android:background="@drawable/button_enter_bg"
+        android:textColor="@android:color/white"
+        android:layout_marginBottom="15dp"/>
+
+    <ListView
+        android:id="@+id/lv_express_query_result"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:scrollbars="none"
+        android:dividerHeight="0dp"
+        android:divider="@null"/>
+</LinearLayout>

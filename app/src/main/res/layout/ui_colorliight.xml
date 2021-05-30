@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/fl_flashlight_color"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_blue"
+    android:onClick="onClick_ShowColorPicker"
+    android:visibility="gone">
+
+
+    <com.yangyang.flashlight.weight.HideTextView
+        android:id="@+id/tv_flashlight_hide_color"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:text="@string/click_show_color_picker"
+        android:textSize="20sp"
+        android:onClick="onClick_ShowColorPicker"/>
+
+</FrameLayout>
