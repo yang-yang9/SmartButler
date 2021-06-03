@@ -10,8 +10,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.yangyang.bookkeeping.db.DBManager;
 import com.yangyang.smartbutler.R;
+import com.yangyang.smartbutler.entity.User;
+
+import cn.bmob.v3.BmobUser;
 
 public class BookkeepingSettingActivity extends AppCompatActivity {
+    BmobUser user = BmobUser.getCurrentUser(User.class);
+    String uId = user.getObjectId();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +43,7 @@ public class BookkeepingSettingActivity extends AppCompatActivity {
                 .setNegativeButton("确定", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        DBManager.deleteAllAccount();
+                        DBManager.deleteAllAccount(uId);
                         Toast.makeText(BookkeepingSettingActivity.this,"删除成功！",Toast.LENGTH_SHORT).show();
                     }
                 });

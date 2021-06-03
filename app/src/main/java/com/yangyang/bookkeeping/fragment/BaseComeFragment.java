@@ -22,12 +22,15 @@ import com.yangyang.bookkeeping.utils.KeyBoardUtils;
 import com.yangyang.bookkeeping.weight.PickerDialog;
 import com.yangyang.bookkeeping.weight.RemarkDialog;
 import com.yangyang.smartbutler.R;
+import com.yangyang.smartbutler.entity.User;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+
+import cn.bmob.v3.BmobUser;
 
 /*
  *   项目名：SmartButler
@@ -47,12 +50,16 @@ public abstract class BaseComeFragment extends Fragment implements View.OnClickL
     protected List<TypeBean> typeList;
     protected TypeBaseAdapter typeBaseAdapter;
     protected AccountBean accountBean;
+    //User user = BmobUser.getCurrentUser(User.class);
+    BmobUser user = BmobUser.getCurrentUser(User.class);
+    String uId = user.getObjectId();
 
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         accountBean = new AccountBean();
+        accountBean.setuId(uId);
         accountBean.setTypename("其他");
         accountBean.setsImageId(R.mipmap.ic_qita_fs);
     }

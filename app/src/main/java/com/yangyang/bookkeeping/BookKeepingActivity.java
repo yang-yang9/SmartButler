@@ -27,10 +27,13 @@ import com.yangyang.bookkeeping.ui.SearchActivity;
 import com.yangyang.bookkeeping.weight.BudgetDialog;
 import com.yangyang.bookkeeping.weight.MoreDialog;
 import com.yangyang.smartbutler.R;
+import com.yangyang.smartbutler.entity.User;
 
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+
+import cn.bmob.v3.BmobUser;
 /*
  *   项目名：SmartButler
  *   包名：com.yangyang.bookkeeping
@@ -54,6 +57,7 @@ public class BookKeepingActivity extends AppCompatActivity implements View.OnCli
     private ImageView iv_top_show;
 
     private SharedPreferences preferences;
+    String uId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,6 +73,8 @@ public class BookKeepingActivity extends AppCompatActivity implements View.OnCli
         mDatas = new ArrayList<>();
         adapter = new AccountAdapter(this, mDatas);
         lv_today.setAdapter(adapter);
+        BmobUser user = BmobUser.getCurrentUser(User.class);
+        uId = user.getObjectId();
     }
 
     private void addListViewHeader() {
@@ -122,7 +128,7 @@ public class BookKeepingActivity extends AppCompatActivity implements View.OnCli
                         .setPositiveButton("确定", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                DBManager.deleteItemFromAccounttbById(beanId);
+                                DBManager.deleteItemFromAccounttbById(beanId, uId);
                                 mDatas.remove(bean);
                                 adapter.notifyDataSetChanged();
                                 setMainTopShow();
@@ -176,10 +182,11 @@ public class BookKeepingActivity extends AppCompatActivity implements View.OnCli
             @Override
             public void onEnsure(float money) {
                 SharedPreferences.Editor editor = preferences.edit();
+                //editor.putString("uId", uId);
                 editor.putFloat("budget", money);
                 editor.commit();
 
-                float outcomeOneMonth = DBManager.getSumMoneyOneMonth(year, month, 0);
+                float outcomeOneMonth = DBManager.getSumMoneyOneMonth(uId, year, month, 0);
                 float surplus = money - outcomeOneMonth;
 
                 tv_top_budget.setText("￥" + surplus);
@@ -217,28 +224,33 @@ public class BookKeepingActivity extends AppCompatActivity implements View.OnCli
     }
 
     private void setMainTopShow() {
-        float incomeOneDay = DBManager.getSumMoneyOneDay(year, month, day, 1);
-        float outcomeOneDay = DBManager.getSumMoneyOneDay(year, month, day, 0);
+        float incomeOneDay = DBManager.getSumMoneyOneDay(uId, year, month, day, 1);
+        float outcomeOneDay = DBManager.getSumMoneyOneDay(uId, year, month, day, 0);
         String infoOneDay = "今日支出 ￥"+outcomeOneDay+"  收入 ￥"+incomeOneDay;
         tv_top_con.setText(infoOneDay);
 
-        float incomeOneMonth = DBManager.getSumMoneyOneMonth(year, month, 1);
-        float outcomeOneMonth = DBManager.getSumMoneyOneMonth(year, month, 0);
+        float incomeOneMonth = DBManager.getSumMoneyOneMonth(uId, year, month, 1);
+        float outcomeOneMonth = DBManager.getSumMoneyOneMonth(uId, year, month, 0);
         tv_top_in.setText("￥"+incomeOneMonth);
         tv_top_out.setText("￥"+outcomeOneMonth);
 
         //设置显示运算剩余
+        String shareUID = preferences.getString("uId", "");
         float bmoney = preferences.getFloat("budget", 0);//预算
         if (bmoney == 0) {
             tv_top_budget.setText("￥ 0");
         }else{
-            float syMoney = bmoney-outcomeOneMonth;
-            tv_top_budget.setText("￥"+syMoney);
+            //if (shareUID.equals(uId)) {
+                float syMoney = bmoney-outcomeOneMonth;
+                tv_top_budget.setText("￥"+syMoney);
+            //} else {
+                //tv_top_budget.setText("￥ 0");
+            //}
         }
     }
 
     private void loadDBData() {
-        List<AccountBean> list = DBManager.getAccountOneDayFromAccounttb(year, month, day);
+        List<AccountBean> list = DBManager.getAccountOneDayFromAccounttb(uId, year, month, day);
         mDatas.clear();
         mDatas.addAll(list);
         adapter.notifyDataSetChanged();

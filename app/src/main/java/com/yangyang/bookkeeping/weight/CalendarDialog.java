@@ -20,10 +20,13 @@ import androidx.annotation.NonNull;
 import com.yangyang.bookkeeping.adapter.CalendarAdapter;
 import com.yangyang.bookkeeping.db.DBManager;
 import com.yangyang.smartbutler.R;
+import com.yangyang.smartbutler.entity.User;
 
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+
+import cn.bmob.v3.BmobUser;
 
 /*
  *   项目名：SmartButler
@@ -45,6 +48,8 @@ public class CalendarDialog extends Dialog implements View.OnClickListener {
     int selectPos = -1;
     private CalendarAdapter adapter;
     int selectMonth = -1;
+    BmobUser user = BmobUser.getCurrentUser(User.class);
+    String uId = user.getObjectId();
 
     public interface OnRefreshListener{
         public void onRefresh(int selPos,int year,int month);
@@ -103,7 +108,7 @@ public class CalendarDialog extends Dialog implements View.OnClickListener {
 
     private void addViewToLayout() {
         yearViewList = new ArrayList<>();
-        yearList = DBManager.getYearListFromAccounttb();
+        yearList = DBManager.getYearListFromAccounttb(uId);
 
         if (yearList.size() == 0) {
             int year = Calendar.getInstance().get(Calendar.YEAR);

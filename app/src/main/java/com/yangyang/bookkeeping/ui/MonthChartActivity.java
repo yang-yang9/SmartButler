@@ -16,10 +16,13 @@ import com.yangyang.bookkeeping.fragment.InComeChartFragment;
 import com.yangyang.bookkeeping.fragment.OutComeChartFragment;
 import com.yangyang.bookkeeping.weight.CalendarDialog;
 import com.yangyang.smartbutler.R;
+import com.yangyang.smartbutler.entity.User;
 
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+
+import cn.bmob.v3.BmobUser;
 
 public class MonthChartActivity extends AppCompatActivity {
     Button btn_in,btn_out;
@@ -32,6 +35,9 @@ public class MonthChartActivity extends AppCompatActivity {
     private InComeChartFragment incomeChartFragment;
     private OutComeChartFragment outcomeChartFragment;
     private ChartViewPagerAdapter chartVPAdapter;
+
+    BmobUser user = BmobUser.getCurrentUser(User.class);
+    String uId = user.getObjectId();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,10 +74,10 @@ public class MonthChartActivity extends AppCompatActivity {
         month = calendar.get(Calendar.MONTH)+1;
     }
     private void initStatistics(int year, int month) {
-        float inMoneyOneMonth = DBManager.getSumMoneyOneMonth(year, month, 1);  //收入总钱数
-        float outMoneyOneMonth = DBManager.getSumMoneyOneMonth(year, month, 0); //支出总钱数
-        int incountItemOneMonth = DBManager.getCountItemOneMonth(year, month, 1);  //收入多少笔
-        int outcountItemOneMonth = DBManager.getCountItemOneMonth(year, month, 0); //支出多少笔
+        float inMoneyOneMonth = DBManager.getSumMoneyOneMonth(uId, year, month, 1);  //收入总钱数
+        float outMoneyOneMonth = DBManager.getSumMoneyOneMonth(uId, year, month, 0); //支出总钱数
+        int incountItemOneMonth = DBManager.getCountItemOneMonth(uId, year, month, 1);  //收入多少笔
+        int outcountItemOneMonth = DBManager.getCountItemOneMonth(uId, year, month, 0); //支出多少笔
         tv_date.setText(year+"年"+month+"月账单");
         tv_in.setText("共"+incountItemOneMonth+"笔收入, ￥ "+inMoneyOneMonth);
         tv_out.setText("共"+outcountItemOneMonth+"笔支出, ￥ "+outMoneyOneMonth);

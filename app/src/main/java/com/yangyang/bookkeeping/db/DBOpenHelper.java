@@ -35,7 +35,7 @@ public class DBOpenHelper extends SQLiteOpenHelper {
 
         insertType(db);
 
-        String accountSql = "create table accounttb(id integer primary key autoincrement," +
+        String accountSql = "create table accounttb(id integer primary key autoincrement,uId varchar(15)," +
                 "typename varchar(10),sImageId integer,beizhu varchar(80),money float," +
                 "time varchar(60),year integer,month integer,day integer,kind integer)";
 

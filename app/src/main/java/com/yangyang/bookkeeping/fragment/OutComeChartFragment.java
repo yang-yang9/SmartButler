@@ -46,7 +46,7 @@ public class OutComeChartFragment extends BaseComeChartFragment {
     protected void setAxisData(int year, int month) {
         List<IBarDataSet> sets = new ArrayList<>();
         //获取这个月每天的支出总金额，
-        List<BarChartItemBean> list = DBManager.getSumMoneyOneDayInMonth(year, month, 0);
+        List<BarChartItemBean> list = DBManager.getSumMoneyOneDayInMonth(uId, year, month, 0);
         if (list.size() == 0) {
             barChart.setVisibility(View.GONE);
             tv_chart.setVisibility(View.VISIBLE);
@@ -105,7 +105,7 @@ public class OutComeChartFragment extends BaseComeChartFragment {
     @Override
     protected void setYAxis(int year, int month) {
         //获取本月收入最高的一天为多少，将他设定为y轴的最大值
-        float maxMoney = DBManager.getMaxMoneyOneDayInMonth(year, month, 0);
+        float maxMoney = DBManager.getMaxMoneyOneDayInMonth(uId, year, month, 0);
         float max = (float) Math.ceil(maxMoney);   // 将最大金额向上取整
         //设置y轴
         YAxis yAxis_right = barChart.getAxisRight();

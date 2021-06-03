@@ -18,9 +18,12 @@ import com.yangyang.bookkeeping.adapter.ChartItemAdapter;
 import com.yangyang.bookkeeping.db.DBManager;
 import com.yangyang.bookkeeping.entity.ChartItemBean;
 import com.yangyang.smartbutler.R;
+import com.yangyang.smartbutler.entity.User;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import cn.bmob.v3.BmobUser;
 
 /*
  *   项目名：SmartButler
@@ -39,6 +42,9 @@ public abstract class BaseComeChartFragment extends Fragment {
     private ChartItemAdapter itemAdapter;
     protected BarChart barChart;
     TextView tv_chart;
+
+    BmobUser user = BmobUser.getCurrentUser(User.class);
+    String uId = user.getObjectId();
 
     @Nullable
     @Override
@@ -76,7 +82,7 @@ public abstract class BaseComeChartFragment extends Fragment {
 
 
     public void loadData(int year,int month,int kind) {
-        List<ChartItemBean> list = DBManager.getChartListFromAccounttb(year, month, kind);
+        List<ChartItemBean> list = DBManager.getChartListFromAccounttb(uId, year, month, kind);
         mDatas.clear();
         mDatas.addAll(list);
         itemAdapter.notifyDataSetChanged();

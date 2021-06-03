@@ -15,9 +15,12 @@ import com.yangyang.bookkeeping.adapter.AccountAdapter;
 import com.yangyang.bookkeeping.db.DBManager;
 import com.yangyang.bookkeeping.entity.AccountBean;
 import com.yangyang.smartbutler.R;
+import com.yangyang.smartbutler.entity.User;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import cn.bmob.v3.BmobUser;
 
 public class SearchActivity extends AppCompatActivity implements View.OnClickListener {
     private ImageView iv_back;
@@ -27,6 +30,8 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
     private TextView tv_empty;
     private List<AccountBean> mDatas;
     private AccountAdapter adapter;
+    BmobUser user = BmobUser.getCurrentUser(User.class);
+    String uId = user.getObjectId();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,7 +69,7 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
                     Toast.makeText(this,"输入内容不能为空！",Toast.LENGTH_SHORT).show();
                     return;
                 }
-                List<AccountBean> list = DBManager.getAccountListByRemarkFromAccounttb(searchContent);
+                List<AccountBean> list = DBManager.getAccountListByRemarkFromAccounttb(uId, searchContent);
                 mDatas.clear();
                 mDatas.addAll(list);
                 adapter.notifyDataSetChanged();

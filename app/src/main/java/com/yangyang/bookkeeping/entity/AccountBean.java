@@ -10,6 +10,7 @@ package com.yangyang.bookkeeping.entity;
 
 public class AccountBean {
     private int id;
+    private String uId;
     private String typename;
     private int sImageId;
     private String beizhu;
@@ -23,8 +24,9 @@ public class AccountBean {
     public AccountBean() {
     }
 
-    public AccountBean(int id, String typename, int sImageId, String beizhu, float money, String time, int year, int month, int day, int kind) {
+    public AccountBean(int id, String uId, String typename, int sImageId, String beizhu, float money, String time, int year, int month, int day, int kind) {
         this.id = id;
+        this.uId = uId;
         this.typename = typename;
         this.sImageId = sImageId;
         this.beizhu = beizhu;
@@ -42,6 +44,14 @@ public class AccountBean {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getuId() {
+        return uId;
+    }
+
+    public void setuId(String uId) {
+        this.uId = uId;
     }
 
     public String getTypename() {
@@ -120,6 +130,7 @@ public class AccountBean {
     public String toString() {
         return "AccountBean{" +
                 "id=" + id +
+                ", uId='" + uId + '\'' +
                 ", typename='" + typename + '\'' +
                 ", sImageId=" + sImageId +
                 ", beizhu='" + beizhu + '\'' +

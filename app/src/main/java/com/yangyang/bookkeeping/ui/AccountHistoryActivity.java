@@ -16,10 +16,13 @@ import com.yangyang.bookkeeping.db.DBManager;
 import com.yangyang.bookkeeping.entity.AccountBean;
 import com.yangyang.bookkeeping.weight.CalendarDialog;
 import com.yangyang.smartbutler.R;
+import com.yangyang.smartbutler.entity.User;
 
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+
+import cn.bmob.v3.BmobUser;
 
 public class AccountHistoryActivity extends AppCompatActivity implements View.OnClickListener {
     private ImageView iv_back;
@@ -66,7 +69,7 @@ public class AccountHistoryActivity extends AppCompatActivity implements View.On
                         .setPositiveButton("确定", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                DBManager.deleteItemFromAccounttbById(selId);
+                                DBManager.deleteItemFromAccounttbById(selId, uId);
                                 mDatas.remove(bean);
                                 adapter.notifyDataSetChanged();
                             }
@@ -78,8 +81,10 @@ public class AccountHistoryActivity extends AppCompatActivity implements View.On
 
     }
 
+    BmobUser user = BmobUser.getCurrentUser(User.class);
+    String uId = user.getObjectId();
     private void loadData(int year, int month) {
-        List<AccountBean> list = DBManager.getAccountOneMonthFromAccounttb(year, month);
+        List<AccountBean> list = DBManager.getAccountOneMonthFromAccounttb(uId, year, month);
         mDatas.clear();
         mDatas.addAll(list);
         adapter.notifyDataSetChanged();

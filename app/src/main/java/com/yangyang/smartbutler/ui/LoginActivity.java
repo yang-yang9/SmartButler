@@ -182,7 +182,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                                     if (e.getErrorCode() == 101) {
                                         Toast.makeText(LoginActivity.this, "用户名或密码错误", Toast.LENGTH_SHORT).show();
                                     } else {
-                                        Toast.makeText(LoginActivity.this, "连接超时，请检查网络状况", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(LoginActivity.this, e.getErrorCode()+"连接超时，请检查网络状况", Toast.LENGTH_SHORT).show();
                                     }
 
                                     //Toast.makeText(LoginActivity.this, "登陆失败： " + e.toString(), Toast.LENGTH_SHORT).show();
