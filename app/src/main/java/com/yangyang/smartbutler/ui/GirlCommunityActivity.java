@@ -38,6 +38,7 @@ import java.util.List;
  */
 
 public class GirlCommunityActivity extends BaseActivity {
+    private LinearLayout llProgress;
     private GridView mGridView;
 
     private List<GirlData> mList = new ArrayList<>();
@@ -60,10 +61,11 @@ public class GirlCommunityActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_girl_community);
 
-        initView();
+        //initView();
     }
 
     private void initView() {
+        llProgress = findViewById(R.id.ll_progress);
         mGridView = findViewById(R.id.gv_girl_community);
 
         //初始化提示框
@@ -81,11 +83,16 @@ public class GirlCommunityActivity extends BaseActivity {
             e.printStackTrace();
         }*/
         //解析
-        RxVolley.get(StaticClass.GIRL_URL, new HttpCallback() {
+        int startId = getRandom(1, 10) * 10;
+        String url = StaticClass.GIRL_URL + "&start=" + startId + "&count=30";
+        //Toast.makeText(this, startId+"数量", Toast.LENGTH_SHORT).show();
+        RxVolley.get(url, new HttpCallback() {
             @Override
             public void onSuccess(String t) {
                 L.i("Girl Json:" + t);
                 parsingJson(t);
+                llProgress.setVisibility(View.GONE);
+                mGridView.setVisibility(View.VISIBLE);
             }
         });
 
@@ -120,31 +127,6 @@ public class GirlCommunityActivity extends BaseActivity {
                 JSONObject json = (JSONObject) jsonArray.get(i);
                 String url = json.getString("url");
 
-                /*WebTool.GetRedirectUrl(GirlCommunityActivity.this, url, new WebTool.CallBackUrl(){
-                    @Override
-                    public void F(String url) {
-                        L.i("最终url：" + url);
-                        mListUrl.add(url);
-
-                        GirlData data = new GirlData();
-                        data.setImgUrl(url);
-                        mList.add(data);
-                    }
-                });*/
-                //String path;
-                /*new Thread() {
-                    @Override
-                    public void run() {
-                        String path0 = getRedirectUrl(url);
-                        String path = getRedirectUrl(path0);
-                        //L.i("最终url：" + path);
-                        mListUrl.add(path);
-
-                        GirlData data = new GirlData();
-                        data.setImgUrl(path);
-                        mList.add(data);
-                    }
-                }.start();*/
                 mListUrl.add(url);
 
                 GirlData data = new GirlData();
@@ -179,5 +161,22 @@ public class GirlCommunityActivity extends BaseActivity {
             e.printStackTrace();
         }
         return url;
+    }
+
+
+    public int getRandom(int start, int end){
+        return (int)(Math.random() * (end-start+1) + start);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        mList.clear();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        initView();
     }
 }

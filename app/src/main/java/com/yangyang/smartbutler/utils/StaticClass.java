@@ -28,7 +28,7 @@ public class StaticClass {
     //聚合数据归属地查询key
     public static final String PLACE_QUERY_KEY = "6af9156fc63442ecc22417a565e6aa4f";
     //美女图片URL
-    public static final String GIRL_URL = "http://wallpaper.apc.360.cn/index.php?c=WallPaperAndroid&a=getAppsByCategory&cid=6&start=0&count=10";
+    public static final String GIRL_URL = "http://wallpaper.apc.360.cn/index.php?c=WallPaperAndroid&a=getAppsByCategory&cid=6";
     //科大讯飞语音key
     public static final String VOICE_KEY = "45ecaa12";
 
